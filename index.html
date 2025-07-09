@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <title>عيد ميلاد سعيد 🎉🎂</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Cairo', sans-serif;
+      overflow: hidden;
+      background: linear-gradient(120deg, #fddde6, #ffe9f0, #fbc7d4);
+      background-size: 400% 400%;
+      animation: backgroundMove 15s ease infinite;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    @keyframes backgroundMove {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      animation: sparkle 2s infinite ease-in-out;
+    }
+
+    @keyframes sparkle {
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 1; }
+    }
+
+    .cloud {
+      position: absolute;
+      background: #fff;
+      border-radius: 50%;
+      opacity: 0.4;
+      animation: cloudMove 60s linear infinite;
+    }
+
+    @keyframes cloudMove {
+      0% { left: -200px; }
+      100% { left: 120vw; }
+    }
+
+    .balloon {
+      position: absolute;
+      width: 20px;
+      height: 30px;
+      background: red;
+      border-radius: 50%;
+      animation: float 10s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh); }
+      100% { transform: translateY(-100vh); }
+    }
+
+    .bunting {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+      z-index: 5;
+    }
+
+    .flag {
+      width: 0;
+      height: 0;
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      border-top: 25px solid;
+      animation: swing 2s ease-in-out infinite;
+    }
+
+    .flag:nth-child(odd) { border-top-color: #ff6f91; }
+    .flag:nth-child(even) { border-top-color: #ffc107; }
+
+    @keyframes swing {
+      0%, 100% { transform: rotate(0deg); }
+      50% { transform: rotate(5deg); }
+    }
+
+    .cake {
+      position: relative;
+      z-index: 10;
+      margin-top: 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .layer {
+      background: #ffb6c1;
+      border-radius: 20px;
+      box-shadow: 0 5px #d36e82;
+      position: relative;
+      margin: 6px 0;
+    }
+
+    .layer.bottom {
+      width: 200px;
+      height: 60px;
+    }
+
+    .layer.middle {
+      width: 160px;
+      height: 50px;
+    }
+
+    .layer.top {
+      width: 120px;
+      height: 40px;
+    }
+
+    .cream {
+      width: 100%;
+      height: 12px;
+      background: #fff;
+      border-radius: 20px 20px 0 0;
+      position: absolute;
+      top: 0;
+    }
+
+    .cherry {
+      width: 12px;
+      height: 12px;
+      background: red;
+      border-radius: 50%;
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+    }
+
+    .candles {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      z-index: 3;
+    }
+
+    .candle {
+      width: 6px;
+      height: 30px;
+      background: #fff;
+      border-radius: 3px;
+      position: relative;
+    }
+
+    .flame {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 10px;
+      height: 14px;
+      background: radial-gradient(#ffeb3b, #ff5722);
+      border-radius: 50%;
+      animation: flameFlicker 1s infinite alternate;
+    }
+
+    @keyframes flameFlicker {
+      0% { opacity: 1; transform: scale(1); }
+      100% { opacity: 0.6; transform: scale(1.2); }
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: #ff6f91;
+      border: none;
+      color: white;
+      border-radius: 30px;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .message {
+      margin-top: 20px;
+      font-size: 2rem;
+      color: white;
+      visibility: hidden;
+      opacity: 0;
+      transition: 1s ease;
+      z-index: 10;
+    }
+
+    .message.visible {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .countdown {
+      font-size: 3rem;
+      color: #fff;
+      position: absolute;
+      top: 40%;
+      transform: translateY(-50%);
+      z-index: 999;
+    }
+
+    .item {
+      position: absolute;
+      bottom: -30px;
+      font-size: 24px;
+      animation: rise 6s ease-out forwards;
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    @keyframes rise {
+      to { transform: translateY(-120vh); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="stars" id="stars"></div>
+  <div class="cloud" style="width:100px;height:50px;top:20%;left:-200px;"></div>
+  <div class="cloud" style="width:150px;height:70px;top:40%;left:-300px;"></div>
+  <div class="balloon" style="background:#ff6f91;left:10%;animation-delay:0s;"></div>
+  <div class="balloon" style="background:#6fcf97;left:50%;animation-delay:2s;"></div>
+  <div class="balloon" style="background:#feca57;left:80%;animation-delay:4s;"></div>
+  <div class="bunting">
+    <div class="flag"></div><div class="flag"></div><div class="flag"></div>
+    <div class="flag"></div><div class="flag"></div><div class="flag"></div>
+  </div>
+
+  <div class="cake">
+    <div class="layer top">
+      <div class="candles" id="candles">
+        <div class="candle"><div class="flame"></div></div>
+        <div class="candle"><div class="flame"></div></div>
+        <div class="candle"><div class="flame"></div></div>
+      </div>
+      <div class="cream"></div>
+    </div>
+    <div class="layer middle"><div class="cream"></div></div>
+    <div class="layer bottom"><div class="cream"></div></div>
+    <div class="cherry"></div>
+  </div>
+
+  <button id="btn">🎂 اطفي الشموع 🎂</button>
+  <div class="message" id="msg">🎉🎈 كل عام وانتي بخير 🎈🎉</div>
+
+  <audio id="clap" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_2e2a6618c8.mp3?filename=short-crowd-cheer-6713.mp3" preload="auto"></audio>
+
+  <script>
+    const btn = document.getElementById("btn");
+    const flames = document.querySelectorAll(".flame");
+    const msg = document.getElementById("msg");
+    const clap = document.getElementById("clap");
+
+    btn.onclick = () => {
+      flames.forEach(f => f.style.display = "none");
+      countdown(3, () => {
+        clap.play();
+        msg.classList.add("visible");
+        showCelebration();
+        setTimeout(() => flames.forEach(f => f.style.display = "block"), 3000);
+      });
+    };
+
+    function countdown(n, callback) {
+      if (n === 0) {
+        document.querySelectorAll('.countdown').forEach(e => e.remove());
+        callback();
+        return;
+      }
+      const el = document.createElement("div");
+      el.className = "countdown";
+      el.textContent = n;
+      document.body.appendChild(el);
+      setTimeout(() => { el.remove(); countdown(n - 1, callback); }, 1000);
+    }
+
+    function showCelebration() {
+      const icons = ["🎈", "🎁", "🎂", "🍰", "✨", "🎊", "💖", "🌟"];
+      for (let i = 0; i < 50; i++) {
+        const el = document.createElement("div");
+        el.className = "item";
+        el.textContent = icons[Math.floor(Math.random() * icons.length)];
+        el.style.left = Math.random() * 100 + "vw";
+        el.style.fontSize = (20 + Math.random() * 20) + "px";
+        el.style.animationDuration = (3 + Math.random() * 3) + "s";
+        document.body.appendChild(el);
+        setTimeout(() => el.remove(), 8000);
+      }
+    }
+
+    const stars = document.getElementById("stars");
+    for (let i = 0; i < 100; i++) {
+      const s = document.createElement("div");
+      s.className = "star";
+      s.style.top = Math.random() * 100 + "%";
+      s.style.left = Math.random() * 100 + "%";
+      s.style.animationDuration = (1 + Math.random() * 3) + "s";
+      stars.appendChild(s);
+    }
+  </script>
+</body>
+</html>
